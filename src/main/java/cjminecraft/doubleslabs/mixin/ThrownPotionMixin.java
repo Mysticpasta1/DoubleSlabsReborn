@@ -14,9 +14,9 @@ import net.minecraft.world.level.block.state.BlockState;
 public class ThrownPotionMixin {
 
     public static void dowseFire(ThrownPotion potion, BlockPos pos) {
-        BlockState state = potion.level.getBlockState(pos);
+        BlockState state = potion.level().getBlockState(pos);
         if (state.getBlock() instanceof DynamicSlabBlock) {
-            BlockEntity entity = potion.level.getBlockEntity(pos);
+            BlockEntity entity = potion.level().getBlockEntity(pos);
             if (entity instanceof SlabTileEntity) {
                 SlabTileEntity slab = (SlabTileEntity) entity;
                 dowseFire(potion, pos, slab.getPositiveBlockInfo());
@@ -30,11 +30,11 @@ public class ThrownPotionMixin {
         if (blockstate == null)
             return;
         if (blockstate.is(BlockTags.FIRE)) {
-            potion.level.removeBlock(pos, false);
+            potion.level().removeBlock(pos, false);
         } else if (AbstractCandleBlock.isLit(blockstate)) {
             AbstractCandleBlock.extinguish(null, blockstate, block.getWorld(), pos);
         } else if (CampfireBlock.isLitCampfire(blockstate)) {
-            potion.level.levelEvent(null, 1009, pos, 0);
+            potion.level().levelEvent(null, 1009, pos, 0);
             CampfireBlock.dowse(potion.getOwner(), block.getWorld(), pos, blockstate);
             block.setBlockState(blockstate.setValue(CampfireBlock.LIT, Boolean.FALSE));
         }

@@ -60,7 +60,7 @@ public class ClientProxy implements IProxy {
         }
     }
 
-    public static final Transformation RAISED_CAMPFIRE_TRANSFORM = new Transformation(new Vector3f(0, 0.5f, 0), null, null, null);
+    public static final Transformation RAISED_CAMPFIRE_TRANSFORM = new Transformation(new Vector3(0, 0.5f, 0), null, null, null);
 
     private void replaceCampfireModel(Block block, Map<ResourceLocation, BakedModel> registry, ModelBakery loader) {
         for (BlockState state : block.getStateDefinition().getPossibleStates()) {

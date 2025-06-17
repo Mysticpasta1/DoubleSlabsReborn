@@ -9,11 +9,11 @@ import net.minecraftforge.common.ForgeMod;
 public class RayTraceUtil {
 
     public static BlockHitResult rayTrace(Player player) {
-        double length = player.getAttribute(ForgeMod.REACH_DISTANCE.get()).getValue();
+        double length = player.getAttribute(ForgeMod.BLOCK_REACH.get()).getValue();
         Vec3 startPos = new Vec3(player.getX(), player.getY() + player.getEyeHeight(), player.getZ());
         Vec3 endPos = startPos.add(player.getLookAngle().x * length, player.getLookAngle().y * length, player.getLookAngle().z * length);
         ClipContext context = new ClipContext(startPos, endPos, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, player);
-        return player.level.clip(context);
+        return player.level().clip(context);
     }
 
 }

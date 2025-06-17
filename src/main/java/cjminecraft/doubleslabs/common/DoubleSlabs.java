@@ -34,6 +34,11 @@ public class DoubleSlabs {
 
     public static final CreativeModeTab TAB = new CreativeModeTab("verticalslabs") {
         @Override
+        public ItemStack getIconItem() {
+            return super.getIconItem();
+        }
+
+        @Override
         public ItemStack makeIcon() {
             ItemStack stack = new ItemStack(DSItems.VERTICAL_SLAB.get());
             stack.addTagElement("item", Items.STONE_BRICK_SLAB.getDefaultInstance().serializeNBT());

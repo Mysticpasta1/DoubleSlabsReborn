@@ -5,9 +5,11 @@ import cjminecraft.doubleslabs.common.config.DSConfig;
 import cjminecraft.doubleslabs.common.init.DSItems;
 import cjminecraft.doubleslabs.common.init.DSRecipes;
 import cjminecraft.doubleslabs.common.items.VerticalSlabItem;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.CraftingBookCategory;
 import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.Level;
@@ -37,6 +39,11 @@ public record VerticalSlabRecipe(ResourceLocation id) implements CraftingRecipe 
     }
 
     @Override
+    public ItemStack assemble(CraftingContainer craftingContainer, RegistryAccess registryAccess) {
+        return null;
+    }
+
+    @Override
     public ItemStack assemble(CraftingContainer inv) {
         ItemStack stack = ItemStack.EMPTY;
         for (int i = 0; i < inv.getContainerSize(); i++) {
@@ -59,6 +66,11 @@ public record VerticalSlabRecipe(ResourceLocation id) implements CraftingRecipe 
     }
 
     @Override
+    public ItemStack getResultItem(RegistryAccess registryAccess) {
+        return null;
+    }
+
+    @Override
     public ItemStack getResultItem() {
         return ItemStack.EMPTY;
     }
@@ -71,5 +83,10 @@ public record VerticalSlabRecipe(ResourceLocation id) implements CraftingRecipe 
     @Override
     public RecipeSerializer<?> getSerializer() {
         return DSRecipes.DYNAMIC_VERTICAL_SLAB.get();
+    }
+
+    @Override
+    public CraftingBookCategory category() {
+        return null;
     }
 }

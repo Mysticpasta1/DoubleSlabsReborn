@@ -11,7 +11,7 @@ import javax.annotation.Nullable;
 
 public class DoubleSlabPlaceContext extends BlockPlaceContext {
     public DoubleSlabPlaceContext(Player player, InteractionHand hand, ItemStack stack, BlockHitResult result) {
-        this(player.level, player, hand, stack, result);
+        this(player.level(), player, hand, stack, result);
     }
 
     protected DoubleSlabPlaceContext(Level worldIn, @Nullable Player playerIn, InteractionHand handIn, ItemStack stackIn, BlockHitResult rayTraceResultIn) {

@@ -7,6 +7,7 @@ import cjminecraft.doubleslabs.common.DoubleSlabs;
 import cjminecraft.doubleslabs.common.blocks.RaisedCampfireBlock;
 import cjminecraft.doubleslabs.common.config.DSConfig;
 import com.google.common.collect.Maps;
+import com.mojang.math.Axis;
 import com.mojang.math.Transformation;
 import com.mojang.math.Vector3f;
 import net.minecraft.client.Minecraft;
@@ -29,11 +30,11 @@ public class ClientConstants {
 
     private static final Map<BlockState, Map<Direction, BakedModel>> VERTICAL_SLAB_MODELS = Maps.newIdentityHashMap();
     private static final Map<Item, BakedModel> VERTICAL_SLAB_ITEM_MODELS = Maps.newIdentityHashMap();
-    private static final Transformation TRANSFORMATION_2D = new Transformation(null, Vector3f.ZN.rotationDegrees(90), null, null);
+    private static final Transformation TRANSFORMATION_2D = new Transformation(null, Axis.ZN.rotationDegrees(90), null, null);
     public static final int TINT_OFFSET = 1000;
 
     public static boolean isTransparent(BlockState state) {
-        return !state.getMaterial().isSolid() || !state.canOcclude();
+        return !state.isSolid() || !state.canOcclude();
     }
 
     public static BakedModel getFallbackModel() {
